@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Portfolio</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+    <link href="modal.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo"><a href="#"><h2>My CV</h2></a></div>
+        <ul id="main-menu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#work">Work</a></li>
+        </ul>
+    </div>
+
+    <div id="container">
+        <main>
+
+            <!--Begin About Section-->
+            <div id="about">
+                <h1>About</h1>
+
+                <div class="top-divider"></div>
+                <div class="content">
+                    <aside>
+                        <img src="images/profile-pic.JPG" />
+                    </aside>
+                    <article>
+                        <h2>Muhammad Rafi Brilliansyah Ramadhan</h2>
+                        <h4>Web Developer</h4>
+                        <p>I am currently a student at "Universitas Lambung Mangkurat" in Banjarmasin. My major is
+                            Information
+                            Technology. Apart from being a student, I also often work on application development
+                            projects, especially web applications as a freelance.
+                        </p>
+
+                        <ul id="icon-social">
+                            <li><a href="#" class="icon facebook-icon">Facebook</a></li>
+                            <li><a href="#" class="icon whatsapp-icon">Whatsapp</a></li>
+                            <li><a href="#" class="icon google-icon">Google</a></li>
+                            <li><a href="#" class="icon linkedin-icon">LinkedIn</a></li>
+                            <li><a href="#" class="icon github-icon">Github</a></li>
+                            <li><a href="#" class="icon web-icon">Web</a></li>
+                        </ul>
+
+                    </article>
+                </div>
+                <div class="bottom-divider"></div>
+            </div>
+            <!--End About Section-->
+
+            <!-- Begin education Section-->
+            <div id="education">
+                <h1>Education</h1>
+                <div class="top-divider"></div>
+                <div class="content">
+                    <div class="col">
+                        <h2>SDN Tebel 1, & SDN Simokerto 8 (2007 - 2011, 2011 - 2012)</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci laboriosam inventore aut
+                            eos quidem accusantium dolorem? Error placeat, id unde tenetur quo asperiores. Consequatur
+                            aperiam atque dolore natus excepturi dolor? </p>
+                    </div>
+
+                    <div class="col col-mid">
+                        <h2>SMPN 37 Surabaya, & SMPN 7 Banjarmasin (2012 - 2013, 2013 - 2014)</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores iste culpa commodi
+                            voluptates aliquid quia porro corrupti dolorum, neque aut vero aliquam blanditiis ea velit
+                            voluptate dicta. Ab, et alias.</p>
+                    </div>
+
+                    <div class="col">
+                        <h2>SMAN 7 Banjarmasin (2014 - 2017)</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cupiditate ab voluptatem
+                            enim dignissimos, soluta temporibus adipisci quod quas expedita, doloribus doloremque
+                            debitis dolorem animi. Cum dolores repudiandae doloribus dicta.</p>
+                    </div>
+                    <div class="col">
+                        <h2>Universitas Lambung Mangkurat, Teknologi Informasi (2017 - Now)</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores iste culpa commodi
+                            voluptates aliquid quia porro corrupti dolorum, neque aut vero aliquam blanditiis ea velit
+                            voluptate dicta. Ab, et alias.</p>
+                    </div>
+
+
+                </div>
+                <div class="bottom-divider"></div>
+            </div>
+            <!--End education Section -->
+
+            <!--Begin Work Section-->
+            <div id="work">
+                <h1>Work</h1>
+                <div class="top-divider"></div>
+                <div class="content">
+                    <table class="center-table-content">
+                        <tr>
+                            <td>
+                                <figure>
+                                    <img src="images/work/FKUI.png" id="modal1"
+                                        alt="Kegiatan Forum Kantor Urusan Internasional" class="work-thumbs-table"><br>
+                                    <h2>Absensi Kegiatan Forum Kantor Urusan Internasional</h2>
+                                </figure>
+                            </td>
+                            <td>
+                                <figure>
+                                    <img src="images/work/Booking bengkel.png" id="modal2"
+                                        alt="Aplikasi Web Booking Bengkel" class="work-thumbs-table"><br>
+                                    <h2>Aplikasi Web Booking Bengkel</h2>
+                                </figure>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <figure>
+                                    <img src="images/work/Pelatihan.png" id="modal3"
+                                        alt="Aplikasi Pelatihan Daring" class="work-thumbs-table"><br>
+                                    <h2>Aplikasi Pelatihan Daring</h2>
+                                </figure>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                    <!-- Modal -->
+                    <div id="myModal1" class="modal">
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img01">
+                        <div id="caption1"></div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="myModal2" class="modal">
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img02">
+                        <div id="caption2"></div>
+                    </div>
+                    <!-- Modal -->
+                    <div id="myModal3" class="modal">
+                        <span class="close">&times;</span>
+                        <img class="modal-content" id="img03">
+                        <div id="caption3"></div>
+                    </div>
+                </div>
+                <div class="bottom-divider"></div>
+            </div>
+            <!--End Work Section-->
+
+            <footer>
+                Muhammad Rafi B.R., 2020
+            </footer>
+        </main>
+    </div>
+
+    <!-- The JavaScript -->
+    <script type="text/javascript">
+        $(function () {
+            $('#main-menu li a').bind('click', function (event) {
+                var $anchor = $(this);
+
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+
+                event.preventDefault();
+            });
+        });
+    </script>
+    <script src="modal.js"></script>
+
+</body>
+
+</html>
