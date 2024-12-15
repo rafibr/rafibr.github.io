@@ -193,6 +193,7 @@ nav {
     position: relative;
     padding: 0 2rem;
     overflow: hidden;
+    background: linear-gradient(to bottom, #0a1f44, #1a365d);
 }
 
 #hero-canvas {
@@ -292,6 +293,10 @@ h2 {
 }
 
 /* About Section */
+.about {
+    background: linear-gradient(to bottom, #1a365d, #2a4a7f);
+}
+
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -375,8 +380,7 @@ h2 {
 
 /* Work Section */
 .work {
-    background: var(--color-dark);
-    padding: 6rem 0;
+    background: linear-gradient(to bottom, #2a4a7f, #1a365d);
 }
 
 .work-grid {
@@ -544,6 +548,10 @@ h2 {
 }
 
 /* Contact Section */
+.contact {
+    background: linear-gradient(to bottom, #1a365d, #0a1f44);
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -812,4 +820,87 @@ footer {
 
 .slide-up {
     animation: slideUp 1s ease forwards;
+}
+
+/* Parallax Backgrounds */
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    will-change: transform;
+}
+
+/* Section specific backgrounds */
+.hero-bg {
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80');
+    opacity: 0.5;
+}
+
+.about-bg {
+    background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80');
+    opacity: 0.3;
+}
+
+.work-bg {
+    background-image: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80');
+    opacity: 0.3;
+}
+
+.contact-bg {
+    background-image: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?q=80');
+    opacity: 0.3;
+}
+
+/* Section styles */
+section {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero, .about, .work, .contact {
+    position: relative;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Gradient overlays for better readability */
+.hero::after,
+.about::after,
+.work::after,
+.contact::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .parallax-bg {
+        height: 100%;
+        position: fixed;
+        transform: none !important;
+    }
 }

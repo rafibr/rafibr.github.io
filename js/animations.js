@@ -49,38 +49,81 @@ class AnimationController {
         // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero section enhanced parallax and text effect
-        const heroContent = document.querySelector('.hero-content');
-        const heroText = heroContent.querySelector('h1');
-        const heroSubtitle = heroContent.querySelector('.subtitle');
+        // Parallax background effect
+        document.querySelectorAll('.parallax-bg').forEach(bg => {
+            gsap.to(bg, {
+                y: '30%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: bg.parentElement,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 1,
+                    invalidateOnRefresh: true
+                }
+            });
+        });
 
-        // Split text animation for hero
-        if (heroText) {
-            const words = heroText.textContent.split(' ');
-            heroText.innerHTML = words.map(word => 
-                `<span class="word">${word}</span>`
-            ).join(' ');
+        // Parallax background animations
+        document.querySelectorAll('.parallax-bg .layer').forEach(layer => {
+            const speed = layer.getAttribute('data-speed');
+            const movement = -(layer.offsetHeight * speed);
+            
+            gsap.to(layer, {
+                y: movement,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: layer.closest('section'),
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                    invalidateOnRefresh: true
+                }
+            });
+        });
 
-            gsap.from('.word', {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                stagger: 0.2,
-                ease: "power3.out"
+        // Animate moon rotation
+        gsap.to('.moon', {
+            rotation: 360,
+            duration: 100,
+            repeat: -1,
+            ease: "none"
+        });
+
+        // Animate clouds
+        gsap.to('.clouds', {
+            x: '100%',
+            duration: 100,
+            repeat: -1,
+            ease: "none"
+        });
+
+        // Animate stars twinkling
+        const stars = document.querySelector('.stars');
+        if (stars) {
+            gsap.to(stars, {
+                opacity: 0.5,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
             });
         }
 
-        // Subtitle fade in
-        gsap.from(heroSubtitle, {
-            opacity: 0,
-            y: 30,
-            duration: 1,
-            delay: 1,
-            ease: "power2.out"
-        });
+        // Animate fog movement
+        const fog = document.querySelector('.fog');
+        if (fog) {
+            gsap.to(fog, {
+                x: '50%',
+                duration: 20,
+                repeat: -1,
+                yoyo: true,
+                ease: "none"
+            });
+        }
 
-        // Parallax effect for hero section
-        gsap.to(heroContent, {
+        // Hero parallax effect
+        gsap.to('.hero-content', {
             yPercent: 50,
             ease: "none",
             scrollTrigger: {
@@ -91,172 +134,152 @@ class AnimationController {
             }
         });
 
-        // Section headers with split text animation
+        // Parallax background effect for sections
         gsap.utils.toArray('.section-header').forEach(header => {
-            const title = header.querySelector('h2');
-            const tag = header.querySelector('.section-tag');
-            
-            gsap.from(tag, {
-                opacity: 0,
-                x: -30,
-                duration: 0.8,
+            gsap.to(header, {
+                backgroundPositionY: "50%",
+                ease: "none",
                 scrollTrigger: {
                     trigger: header,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+
+        // Parallax for work items
+        const workItems = document.querySelectorAll('.work-item');
+        workItems.forEach((item, index) => {
+            // Stagger the parallax effect
+            const direction = index % 2 === 0 ? 1 : -1;
+            
+            gsap.from(item, {
+                y: 100 * direction,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top bottom",
+                    end: "top center",
+                    scrub: 1
                 }
             });
 
-            if (title) {
-                // Split the title into characters
-                const chars = title.textContent.split('');
-                title.innerHTML = chars.map(char => 
-                    `<span class="char">${char}</span>`
-                ).join('');
-
-                gsap.from(title.querySelectorAll('.char'), {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.5,
-                    stagger: 0.03,
+            // Parallax effect for project images
+            const img = item.querySelector('img');
+            if (img) {
+                gsap.to(img, {
+                    y: -50,
+                    ease: "none",
                     scrollTrigger: {
-                        trigger: title,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
+                        trigger: item,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
                     }
                 });
             }
         });
 
-        // About section enhanced animations
+        // Parallax effect for about section
         const aboutContent = document.querySelector('.about-content');
         if (aboutContent) {
             const elements = aboutContent.children;
             
-            // Add glowing border effect to stats
-            document.querySelectorAll('.stat-item').forEach(item => {
-                item.classList.add('glowing-border');
-            });
-
-            gsap.from(elements, {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                stagger: 0.2,
-                scrollTrigger: {
-                    trigger: aboutContent,
-                    start: "top 75%",
-                    toggleActions: "play none none reverse"
-                }
+            Array.from(elements).forEach((el, index) => {
+                gsap.from(el, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 80%",
+                        end: "top 60%",
+                        scrub: 1
+                    }
+                });
             });
         }
 
-        // Skills animation with stagger and scale
-        const skillItems = document.querySelectorAll('.skill-category');
-        skillItems.forEach((item, index) => {
-            const tags = item.querySelectorAll('.skill-tags span');
-            
-            gsap.from(item, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.8,
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-
-            gsap.from(tags, {
-                opacity: 0,
-                scale: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        });
-
-        // Work grid items with 3D hover effect
-        const workItems = document.querySelectorAll('.work-item');
-        workItems.forEach((item, index) => {
-            // Initial animation
-            gsap.from(item, {
-                opacity: 0,
-                y: 100,
-                rotation: 5,
-                duration: 1,
-                delay: index * 0.2,
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-
-            // Add 3D hover effect
-            item.addEventListener('mousemove', (e) => {
-                const rect = item.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                const xPercent = (x / rect.width - 0.5) * 20;
-                const yPercent = (y / rect.height - 0.5) * 20;
-
-                gsap.to(item, {
-                    rotationY: xPercent,
-                    rotationX: -yPercent,
-                    duration: 0.5,
-                    ease: "power1.out"
-                });
-            });
-
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item, {
-                    rotationY: 0,
-                    rotationX: 0,
-                    duration: 0.5,
-                    ease: "power1.out"
-                });
-            });
-        });
-
-        // Stats counter animation with better easing
-        const statNumbers = document.querySelectorAll('.stat-number');
-        statNumbers.forEach(stat => {
-            const endValue = parseInt(stat.textContent);
-            gsap.from(stat, {
-                textContent: 0,
-                duration: 2,
-                ease: "power2.out",
-                snap: { textContent: 1 },
-                scrollTrigger: {
-                    trigger: stat,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                },
-                onUpdate: () => {
-                    stat.classList.add('pulse');
-                }
-            });
-        });
-
-        // Fade in sections on scroll
-        gsap.utils.toArray('section').forEach(section => {
-            gsap.from(section, {
-                opacity: 0,
+        // Parallax for skill tags
+        const skillTags = document.querySelectorAll('.skill-tags span');
+        skillTags.forEach((tag, index) => {
+            gsap.from(tag, {
                 y: 30,
-                duration: 0.8,
+                opacity: 0,
+                duration: 0.5,
                 scrollTrigger: {
-                    trigger: section,
-                    start: 'top 80%',
-                    end: 'top 50%',
-                    toggleActions: 'play none none reverse'
+                    trigger: tag,
+                    start: "top 85%",
+                    end: "top 65%",
+                    scrub: 1
                 }
             });
+        });
+
+        // Contact section parallax
+        const contactElements = document.querySelectorAll('.contact-content > *');
+        contactElements.forEach((el, index) => {
+            gsap.from(el, {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 80%",
+                    end: "top 60%",
+                    scrub: 1
+                }
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    gsap.to(window, {
+                        duration: 1,
+                        scrollTo: {
+                            y: target,
+                            offsetY: 70
+                        },
+                        ease: "power2.inOut"
+                    });
+                }
+            });
+        });
+
+        // Floating animation for stats
+        const statItems = document.querySelectorAll('.stat-item');
+        statItems.forEach((stat, index) => {
+            gsap.to(stat, {
+                y: -20,
+                duration: 2,
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1,
+                delay: index * 0.2
+            });
+        });
+
+        // Background parallax for sections
+        gsap.utils.toArray('section').forEach(section => {
+            const bg = section.querySelector('.section-bg');
+            if (bg) {
+                gsap.to(bg, {
+                    backgroundPosition: `50% ${-50}%`,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            }
         });
     }
 }
