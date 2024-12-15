@@ -50,12 +50,70 @@ class ParticleSystem {
         particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
         particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
         
+        // Create a canvas to generate star texture
+        const canvas = document.createElement('canvas');
+        canvas.width = 32;
+        canvas.height = 32;
+        const ctx = canvas.getContext('2d');
+        
+        // Draw main circle
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const mainRadius = 8;
+        
+        // Create base glow
+        const baseGlow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, mainRadius);
+        baseGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        baseGlow.addColorStop(0.5, 'rgba(255, 255, 255, 0.3)');
+        baseGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = baseGlow;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, mainRadius, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add subtle points
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.lineWidth = 0.8;
+        const points = 6;
+        const pointLength = 3;
+        
+        for (let i = 0; i < points; i++) {
+            const angle = (i * Math.PI * 2) / points;
+            const innerX = centerX + Math.cos(angle) * mainRadius * 0.7;
+            const innerY = centerY + Math.sin(angle) * mainRadius * 0.7;
+            const outerX = centerX + Math.cos(angle) * (mainRadius + pointLength);
+            const outerY = centerY + Math.sin(angle) * (mainRadius + pointLength);
+            
+            ctx.beginPath();
+            ctx.moveTo(innerX, innerY);
+            ctx.lineTo(outerX, outerY);
+            ctx.stroke();
+        }
+        
+        // Add extra glow
+        const extraGlow = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, mainRadius * 1.5);
+        extraGlow.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+        extraGlow.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
+        extraGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        
+        ctx.fillStyle = extraGlow;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, mainRadius * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Create texture from canvas
+        const texture = new THREE.Texture(canvas);
+        texture.needsUpdate = true;
+        
         const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.02,
-            vertexColors: true,
+            size: 0.1,
+            map: texture,
             transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            vertexColors: true,
+            opacity: 0.6
         });
         
         this.particles = new THREE.Points(particlesGeometry, particlesMaterial);
@@ -82,6 +140,16 @@ class ParticleSystem {
     
     animate() {
         requestAnimationFrame(this.animate.bind(this));
+        
+        // Animate particles opacity for twinkling effect
+        const time = Date.now() * 0.001;
+        const positions = this.particles.geometry.attributes.position.array;
+        
+        for(let i = 0; i < positions.length; i += 3) {
+            const idx = i / 3;
+            const offset = idx * 0.1;
+            this.particles.material.opacity = 0.5 + Math.sin(time + offset) * 0.3;
+        }
         
         // Smooth mouse movement
         this.targetX += (this.mouseX - this.targetX) * 0.02;
