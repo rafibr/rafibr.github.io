@@ -46,8 +46,87 @@ class AnimationController {
     }
 
     setupScrollAnimations() {
-        // Register ScrollTrigger plugin
-        gsap.registerPlugin(ScrollTrigger);
+        // Navigation elements
+        const header = document.querySelector('.header');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let lastScrollY = window.scrollY;
+        let scrollTimeout;
+
+        // Show header after initial load
+        setTimeout(() => {
+            header.classList.add('visible');
+        }, 1000);
+
+        // Handle scroll events
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show/hide header based on scroll direction
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                header.classList.remove('visible');
+            } else {
+                header.classList.add('visible');
+            }
+            
+            // Update header background
+            header.style.background = currentScrollY > 50 ? 
+                'rgba(0, 0, 0, 0.95)' : 
+                'rgba(0, 0, 0, 0.8)';
+            
+            lastScrollY = currentScrollY;
+
+            // Update active section
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (currentScrollY > sectionTop && currentScrollY <= sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        };
+
+        // Throttle scroll events
+        window.addEventListener('scroll', () => {
+            if (!scrollTimeout) {
+                scrollTimeout = setTimeout(() => {
+                    handleScroll();
+                    scrollTimeout = null;
+                }, 10);
+            }
+        });
+
+        // Handle navigation clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offset = header.offsetHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - offset;
+                    
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    link.classList.add('active');
+                    
+                    // Scroll to section
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
         // Parallax background effect
         document.querySelectorAll('.parallax-bg').forEach(bg => {
