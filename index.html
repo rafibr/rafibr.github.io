@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 </head>
 <body>
@@ -163,50 +164,82 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="parallax-bg contact-bg"></div>
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2>Get In Touch</h2>
-            </div>
+            <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <h3><i class="fas fa-envelope"></i> Email</h3>
-                            <a href="mailto:rafi.brilliansyah@gmail.com" class="contact-link">rafi.brilliansyah@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <h3><i class="fab fa-linkedin"></i> LinkedIn</h3>
-                            <a href="https://www.linkedin.com/in/rafi-brilliansyah/" target="_blank" class="contact-link">Connect on LinkedIn</a>
-                        </div>
-                        <div class="contact-item">
-                            <h3><i class="fab fa-github"></i> GitHub</h3>
-                            <a href="https://github.com/rafibr" target="_blank" class="contact-link">View My Projects</a>
-                        </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:rafi.brilliansyah@gmail.com">rafi.brilliansyah@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <h3>LinkedIn</h3>
+                        <a href="https://www.linkedin.com/in/rafi-brilliansyah/" target="_blank">Connect on LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <h3>GitHub</h3>
+                        <a href="https://github.com/rafibr" target="_blank">View My Projects</a>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contact-form">
+                <div class="contact-form-wrapper">
+                    <form id="contact-form" class="contact-form">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Send Message</span>
+                            <div class="btn-loading">
+                                <span class="spinner"></span>
+                            </div>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("BoOoL9dkuE7a_k1l9"); // Replace with your EmailJS public key
+        })();
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("BoOoL9dkuE7a_k1l9");
+        })();
+    </script>
+
+    <!-- Custom Scripts -->
+    <script src="js/animations.js"></script>
+    <script src="js/micro-animations.js"></script>
+    <script src="js/contact.js"></script>
 
     <!-- Footer -->
     <footer>
@@ -227,9 +260,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="js/three-scene.js"></script>
-    <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cursor.js"></script>
     <script src="js/work-gallery.js"></script>
