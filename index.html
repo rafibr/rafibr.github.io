@@ -122,63 +122,42 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
-                <h2>Featured Work</h2>
+                <h2>Recent Projects</h2>
             </div>
-            <div class="work-grid">
-                <!-- Project 1 -->
-                <div class="work-item">
-                    <div class="work-image">
-                        <img src="images/project1.jpg" alt="Project 1">
-                        <div class="work-overlay">
-                            <a href="#" class="view-project">View Project</a>
+            
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="project-grid">
+                <!-- Project Card -->
+                <article class="project-card" data-category="web">
+                    <div class="project-image skeleton-loading">
+                        <img src="path/to/project1.jpg" alt="Project 1" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="btn-demo" aria-label="View Demo">Live Demo</a>
+                                <a href="#" class="btn-source" aria-label="View Source">Source Code</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="work-info">
-                        <h3>E-Commerce Platform</h3>
-                        <p>A modern e-commerce platform built with React and Node.js</p>
-                        <div class="work-tags">
-                            <span class="work-tag">React</span>
-                            <span class="work-tag">Node.js</span>
-                            <span class="work-tag">MongoDB</span>
+                    <div class="project-info">
+                        <h3>Project Name</h3>
+                        <p>Short project description goes here.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
                         </div>
                     </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="work-item">
-                    <div class="work-image">
-                        <img src="images/project2.jpg" alt="Project 2">
-                        <div class="work-overlay">
-                            <a href="#" class="view-project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="work-info">
-                        <h3>Portfolio Website</h3>
-                        <p>Creative portfolio website with 3D animations</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Three.js</span>
-                            <span class="work-tag">GSAP</span>
-                            <span class="work-tag">HTML/CSS</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="work-item">
-                    <div class="work-image">
-                        <img src="images/project3.jpg" alt="Project 3">
-                        <div class="work-overlay">
-                            <a href="#" class="view-project">View Project</a>
-                        </div>
-                    </div>
-                    <div class="work-info">
-                        <h3>Task Management App</h3>
-                        <p>Full-stack task management application</p>
-                        <div class="work-tags">
-                            <span class="work-tag">Vue.js</span>
-                            <span class="work-tag">Laravel</span>
-                            <span class="work-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
+                </article>
+
+                <!-- Add more project cards with different categories -->
             </div>
         </div>
     </section>
