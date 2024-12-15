@@ -1,179 +1,218 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Muhammad Rafi Brilliansyah Ramadhan</title>
-    <link href="styles.css" rel="stylesheet" type="text/css">
-    <link href="modal.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafi BR | Creative Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 </head>
-
 <body>
-    <div id="header">
-        <div id="logo"><a href="#"></a></div>
-        <ul id="main-menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#work">Work</a></li>
-        </ul>
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="progress"></div>
+        </div>
+        <div class="counter">0%</div>
     </div>
 
-    <div id="container">
-        <main>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-brand">
+            <span class="highlight">R</span>afi BR
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#work" class="nav-link">Work</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="menu-btn">
+            <div class="menu-btn__lines"></div>
+        </div>
+    </nav>
 
-            <!--Begin About Section-->
-            <div id="about">
-                <h1>About</h1>
-
-                <div class="top-divider"></div>
-                <div class="content">
-                    <aside>
-                        <img src="images/profile-pic.JPG" />
-                    </aside>
-                    <article>
-                        <h2>Muhammad Rafi Brilliansyah Ramadhan</h2>
-                        <h4>Web Developer</h4>
-                        <p>I am currently a student at "Universitas Lambung Mangkurat" in Banjarmasin. My major is
-                            Information
-                            Technology. Apart from being a student, I also often work on application development
-                            projects, especially web applications as a freelance.
-                        </p>
-
-                        <ul id="icon-social">
-                            <li><a href="https://www.facebook.com/rafi.b.ramadhan" class="icon facebook-icon">Facebook</a></li>
-                            <li><a href="https://wa.me/082255303169" class="icon whatsapp-icon">Whatsapp</a></li>
-                            <li><a href="https://www.linkedin.com/in/rafi-brilliansyah-08007a176/" class="icon linkedin-icon">LinkedIn</a></li>
-                            <li><a href="https://github.com/rafibr" class="icon github-icon">Github</a></li>
-                            <li><a href="http://zerone-bjm.com/" class="icon web-icon">Web</a></li>
-                        </ul>
-
-                    </article>
-                </div>
-                <div class="bottom-divider"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Creative <span class="highlight">Developer</span> & <span class="highlight">Designer</span></h1>
+                <p class="subtitle">Crafting digital experiences through code and creativity</p>
             </div>
-            <!--End About Section-->
-
-            <!-- Begin education Section-->
-            <div id="education">
-                <h1>Education</h1>
-                <div class="top-divider"></div>
-                <div class="content">
-                    <div class="col">
-                        <h2>SDN Tebel 1, & SDN Simokerto 8 (2007 - 2011, 2011 - 2012)</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci laboriosam inventore aut
-                            eos quidem accusantium dolorem? Error placeat, id unde tenetur quo asperiores. Consequatur
-                            aperiam atque dolore natus excepturi dolor? </p>
-                    </div>
-
-                    <div class="col col-mid">
-                        <h2>SMPN 37 Surabaya, & SMPN 7 Banjarmasin (2012 - 2013, 2013 - 2014)</h2>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores iste culpa commodi
-                            voluptates aliquid quia porro corrupti dolorum, neque aut vero aliquam blanditiis ea velit
-                            voluptate dicta. Ab, et alias.</p>
-                    </div>
-
-                    <div class="col">
-                        <h2>SMAN 7 Banjarmasin (2014 - 2017)</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia cupiditate ab voluptatem
-                            enim dignissimos, soluta temporibus adipisci quod quas expedita, doloribus doloremque
-                            debitis dolorem animi. Cum dolores repudiandae doloribus dicta.</p>
-                    </div>
-                    <div class="col">
-                        <h2>Universitas Lambung Mangkurat, Teknologi Informasi (2017 - Now)</h2>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores iste culpa commodi
-                            voluptates aliquid quia porro corrupti dolorum, neque aut vero aliquam blanditiis ea velit
-                            voluptate dicta. Ab, et alias.</p>
-                    </div>
-
-
-                </div>
-                <div class="bottom-divider"></div>
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <div class="scroll-line"></div>
             </div>
-            <!--End education Section -->
+        </div>
+    </section>
 
-            <!--Begin Work Section-->
-            <div id="work">
-                <h1>Work</h1>
-                <div class="top-divider"></div>
-                <div class="content">
-                    <table class="center-table-content">
-                        <tr>
-                            <td>
-                                <figure>
-                                    <img src="images/work/FKUI.png" id="modal1"
-                                        alt="Kegiatan Forum Kantor Urusan Internasional" class="work-thumbs-table"><br>
-                                    <h2>Absensi Kegiatan Forum Kantor Urusan Internasional</h2>
-                                </figure>
-                            </td>
-                            <td>
-                                <figure>
-                                    <img src="images/work/Booking bengkel.png" id="modal2"
-                                        alt="Aplikasi Web Booking Bengkel" class="work-thumbs-table"><br>
-                                    <h2>Aplikasi Web Booking Bengkel</h2>
-                                </figure>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>
-                                <figure>
-                                    <img src="images/work/Pelatihan.png" id="modal3"
-                                        alt="Aplikasi Pelatihan Daring" class="work-thumbs-table"><br>
-                                    <h2>Aplikasi Pelatihan Daring</h2>
-                                </figure>
-                            </td>
-
-                        </tr>
-                    </table>
-
-                    <!-- Modal -->
-                    <div id="myModal1" class="modal">
-                        <span class="close">&times;</span>
-                        <img class="modal-content" id="img01">
-                        <div id="caption1"></div>
-                    </div>
-                    <!-- Modal -->
-                    <div id="myModal2" class="modal">
-                        <span class="close">&times;</span>
-                        <img class="modal-content" id="img02">
-                        <div id="caption2"></div>
-                    </div>
-                    <!-- Modal -->
-                    <div id="myModal3" class="modal">
-                        <span class="close">&times;</span>
-                        <img class="modal-content" id="img03">
-                        <div id="caption3"></div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About Me</span>
+                <h2>Who Am I?</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lead">I'm a full-stack developer with a passion for creating beautiful, functional, and user-centered digital experiences.</p>
+                    <p>With 4+ years of development experience, I combine technical expertise with creative problem-solving to build innovative web solutions.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">30+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
                     </div>
                 </div>
-                <div class="bottom-divider"></div>
+                <div class="skills-container">
+                    <h3>Technical Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <div class="skill-tags">
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>Vue.js</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Backend</h4>
+                            <div class="skill-tags">
+                                <span>Node.js</span>
+                                <span>PHP</span>
+                                <span>Python</span>
+                                <span>MySQL</span>
+                                <span>MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools & Others</h4>
+                            <div class="skill-tags">
+                                <span>Git</span>
+                                <span>Docker</span>
+                                <span>AWS</span>
+                                <span>Three.js</span>
+                                <span>GSAP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!--End Work Section-->
+        </div>
+    </section>
 
-            <footer>
-                Muhammad Rafi B.R., 2020
-            </footer>
-        </main>
-    </div>
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2>Featured Projects</h2>
+            </div>
+            <div class="work-grid">
+                <!-- Projects will be added dynamically via JavaScript -->
+            </div>
+        </div>
+    </section>
 
-    <!-- The JavaScript -->
-    <script type="text/javascript">
-        $(function () {
-            $('#main-menu li a').bind('click', function (event) {
-                var $anchor = $(this);
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Let's talk about your project</h3>
+                        <p>Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                        <div class="contact-links">
+                            <a href="mailto:your.email@example.com" class="contact-link">
+                                <span class="icon">✉</span>
+                                your.email@example.com
+                            </a>
+                            <a href="tel:+1234567890" class="contact-link">
+                                <span class="icon">📞</span>
+                                +123 456 7890
+                            </a>
+                            <a href="https://github.com/rafibr" target="_blank" class="contact-link">
+                                <span class="icon">🔗</span>
+                                github.com/rafibr
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <svg viewBox="0 0 24 24" class="btn-icon">
+                                <path d="M21.707 2.293a1 1 0 0 0-1.414 0l-18 18a1 1 0 1 0 1.414 1.414l18-18a1 1 0 0 0 0-1.414z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                $('html, body').stop().animate({
-                    scrollTop: $($anchor.attr('href')).offset().top
-                }, 1500, 'easeInOutExpo');
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="highlight">R</span>afi BR
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/rafibr" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+                    <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Rafi BR. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-                event.preventDefault();
-            });
-        });
-    </script>
-    <script src="modal.js"></script>
-
+    <!-- Scripts -->
+    <script src="js/three-scene.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cursor.js"></script>
 </body>
-
 </html>
