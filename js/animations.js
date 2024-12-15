@@ -1,167 +1,64 @@
 class AnimationController {
     constructor() {
-        this.initializeGSAP();
-        this.setupLoaderAnimation();
+        this.loadingScreen = document.querySelector('.loading-screen');
+        this.progressBar = document.querySelector('.progress');
+        this.counter = document.querySelector('.counter');
+        this.init();
+    }
+
+    init() {
+        this.setupLoadingAnimation();
         this.setupScrollAnimations();
     }
 
-    initializeGSAP() {
-        gsap.registerPlugin(ScrollTrigger);
-        gsap.config({
-            nullTargetWarn: false
-        });
-    }
-
-    setupLoaderAnimation() {
+    setupLoadingAnimation() {
         const tl = gsap.timeline();
         
-        // Simulate loading progress
-        let progress = 0;
-        const progressBar = document.querySelector('.progress');
-        const counter = document.querySelector('.counter');
-        
-        const interval = setInterval(() => {
-            progress += Math.random() * 5;
-            if (progress > 100) progress = 100;
-            
-            gsap.to(progressBar, {
-                width: `${progress}%`,
-                duration: 0.5,
-                ease: 'power1.out'
-            });
-            
-            counter.textContent = `${Math.round(progress)}%`;
-            
-            if (progress === 100) {
-                clearInterval(interval);
-                this.completeLoading(tl);
-            }
-        }, 150);
-    }
-
-    completeLoading(tl) {
-        tl.to('.loading-screen', {
+        tl.to(this.progressBar, {
+            width: '100%',
+            duration: 0.8,
+            ease: 'power2.inOut'
+        })
+        .to(this.counter, {
+            textContent: '100',
+            duration: 0.8,
+            ease: 'power2.inOut',
+            snap: { textContent: 1 },
+        }, 0)
+        .to(this.loadingScreen, {
             opacity: 0,
-            duration: 0.5,
-            delay: 0.5,
+            duration: 0.3,
             onComplete: () => {
-                document.querySelector('.loading-screen').style.display = 'none';
-                this.playIntroAnimation();
+                this.loadingScreen.style.display = 'none';
+                this.completeLoading();
             }
         });
     }
 
-    playIntroAnimation() {
-        const introTl = gsap.timeline();
-
-        introTl
-            .from('nav', {
-                y: -100,
-                opacity: 0,
-                duration: 1,
-                ease: 'power3.out'
-            })
-            .from('.hero h1', {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                ease: 'power3.out'
-            }, '-=0.5')
-            .from('.subtitle', {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: 'power3.out'
-            }, '-=0.7')
-            .from('.cta-container', {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: 'power3.out'
-            }, '-=0.7');
+    completeLoading() {
+        // Reveal animations for main content
+        gsap.to('.hero-content', {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out'
+        });
     }
 
     setupScrollAnimations() {
-        // About section animations
-        gsap.from('.about-content', {
-            scrollTrigger: {
-                trigger: '.about-content',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-        });
-
-        // Tech stack items animation
-        gsap.from('.tech-item', {
-            scrollTrigger: {
-                trigger: '.tech-grid',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'back.out(1.7)'
-        });
-
-        // Experience cards animation
-        gsap.from('.experience-card', {
-            scrollTrigger: {
-                trigger: '.about-visual',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: 'back.out(1.7)'
-        });
-
-        // Project cards animation
-        gsap.from('.project-card', {
-            scrollTrigger: {
-                trigger: '.work-grid',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: 'power3.out'
-        });
-
-        // Contact section animation
-        gsap.from('.contact-content', {
-            scrollTrigger: {
-                trigger: '.contact',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-        });
-
-        // Form elements animation
-        gsap.from('.form-group', {
-            scrollTrigger: {
-                trigger: '.contact-form',
-                start: 'top 80%',
-                toggleActions: 'play none none reverse'
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: 'power3.out'
+        // Fade in sections on scroll
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'top 50%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
         });
     }
 }

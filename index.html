@@ -124,10 +124,22 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Portfolio</span>
-                <h2>Featured Projects</h2>
+                <h2>Featured Work</h2>
             </div>
-            <div class="work-grid">
-                <!-- Projects will be added dynamically via JavaScript -->
+            <div class="work-container">
+                <button class="nav-btn prev-btn" aria-label="Previous project">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="work-grid" id="work-gallery">
+                    <!-- Project cards will be added by JavaScript -->
+                </div>
+                <button class="nav-btn next-btn" aria-label="Next project">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -214,5 +226,6 @@
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cursor.js"></script>
+    <script src="js/work-gallery.js"></script>
 </body>
 </html>

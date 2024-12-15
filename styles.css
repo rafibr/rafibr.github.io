@@ -376,35 +376,106 @@ h2 {
 /* Work Section */
 .work {
     background: var(--color-dark);
+    overflow: hidden;
+    position: relative;
 }
 
-.work-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.work-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+    flex-shrink: 0;
+}
+
+.nav-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+#work-gallery {
+    display: flex;
     gap: 2rem;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    transition: all 0.5s ease;
+    width: 100%;
+    padding: 2rem 0;
 }
 
 .project-card {
+    flex: 0 0 calc(33.333% - 1.333rem);
     background: var(--color-bg);
     border-radius: 15px;
     overflow: hidden;
-    transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card.clone {
+    opacity: 0.5;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    border-color: var(--color-primary);
+}
+
+.project-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
 }
 
 .project-image {
     width: 100%;
-    height: 200px;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
 }
 
 .project-info {
     padding: 1.5rem;
+    background: linear-gradient(
+        to bottom,
+        rgba(26, 26, 26, 0.8),
+        var(--color-bg)
+    );
 }
 
 .project-title {
@@ -417,6 +488,7 @@ h2 {
     color: var(--color-gray);
     margin-bottom: 1rem;
     font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .project-tags {
@@ -430,6 +502,32 @@ h2 {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 100px;
     font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.project-tag:hover {
+    background: var(--color-primary);
+}
+
+@media (max-width: 1200px) {
+    .project-card {
+        flex: 0 0 calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .work-container {
+        padding: 0 0.5rem;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .project-card {
+        flex: 0 0 calc(100% - 1rem);
+    }
 }
 
 /* Contact Section */
