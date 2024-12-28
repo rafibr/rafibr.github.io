@@ -199,9 +199,11 @@ body {
 
 .hero h1 {
 	font-size: 4.5rem;
-	line-height: 1.1;
+	line-height: 1.2;
 	margin-bottom: 1.5rem;
 	font-weight: 700;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 
 .highlight {
@@ -1472,3 +1474,18 @@ section {
 }
 
 /* ...existing code... */
+
+/* Responsive styles for hero heading */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.4;
+    }
+}
