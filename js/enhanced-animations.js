@@ -108,27 +108,31 @@ class EnhancedAnimations {
 			observer.observe(el);
 		});
 	}
-
 	initTypewriterEffect() {
 		const typewriterElements = document.querySelectorAll('.typewriter');
 
 		typewriterElements.forEach(element => {
+			// Store original text
 			const text = element.textContent;
+			// Clear the element
 			element.textContent = '';
+			// Add typewriter-cursor class for blinking effect
+			element.classList.add('typewriter-cursor');
 
 			let i = 0;
+			// Use a faster typing speed (60ms)
 			const typeEffect = setInterval(() => {
 				if (i < text.length) {
 					element.textContent += text.charAt(i);
 					i++;
 				} else {
 					clearInterval(typeEffect);
-					// Remove cursor after typing
+					// Start a blinking cursor effect
 					setTimeout(() => {
-						element.style.borderRight = 'none';
-					}, 1000);
+						element.classList.add('typed');
+					}, 500);
 				}
-			}, 100);
+			}, 60);
 		});
 	}
 
@@ -254,7 +258,19 @@ class EnhancedAnimations {
 	}
 }
 
-// Initialize enhanced animations when DOM is loaded
+// Initialize enhanced animations
+const initEnhancedAnimations = () => {
+	new EnhancedAnimations();
+};
+
+// Initialize enhanced animations when DOM is loaded or after loading screen completes
 document.addEventListener('DOMContentLoaded', () => {
+	// Check if loading screen exists
+	const loadingScreen = document.querySelector('.loading-screen');
+	if (loadingScreen) {
+		document.addEventListener('loadingComplete', initEnhancedAnimations);
+	} else {
+		initEnhancedAnimations();
+	}
 	new EnhancedAnimations();
 });

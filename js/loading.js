@@ -18,8 +18,6 @@ class LoadingScreen {
 	simulateLoading() {
 		const loadingSteps = [
 			{ progress: 20, text: 'Loading assets...' },
-			{ progress: 40, text: 'Initializing components...' },
-			{ progress: 60, text: 'Setting up animations...' },
 			{ progress: 80, text: 'Preparing interface...' },
 			{ progress: 100, text: 'Complete!' }
 		];
@@ -29,15 +27,13 @@ class LoadingScreen {
 		const updateProgress = () => {
 			if (stepIndex < loadingSteps.length) {
 				this.targetProgress = loadingSteps[stepIndex].progress;
-				stepIndex++;
-
-				this.animateProgress(() => {
+				stepIndex++; this.animateProgress(() => {
 					if (stepIndex < loadingSteps.length) {
-						setTimeout(updateProgress, 300);
+						setTimeout(updateProgress, 150); // Reduced from 300ms to 150ms
 					} else {
 						setTimeout(() => {
 							this.hideLoadingScreen();
-						}, 500);
+						}, 200); // Reduced from 500ms to 200ms
 					}
 				});
 			}
@@ -107,7 +103,6 @@ class LoadingScreen {
 			img.src = src;
 		});
 	}
-
 	hideLoadingScreen() {
 		this.loadingScreen.style.opacity = '0';
 		this.loadingScreen.style.pointerEvents = 'none';
@@ -122,11 +117,13 @@ class LoadingScreen {
 				if (header) {
 					header.classList.add('visible');
 				}
-			}, 100);
-
-			// Start main animations
+			}, 50); // Reduced from 100ms to 50ms			// Start main animations
 			this.triggerMainAnimations();
-		}, 500);
+
+			// Dispatch loading complete event for other scripts
+			const loadingCompleteEvent = new Event('loadingComplete');
+			document.dispatchEvent(loadingCompleteEvent);
+		}, 300); // Reduced from 500ms to 300ms
 	}
 
 	triggerMainAnimations() {
@@ -147,9 +144,7 @@ class LoadingScreen {
 				opacity: 0,
 				ease: 'power3.out',
 				delay: 0.3
-			});
-
-			gsap.from('.subtitle', {
+			}); gsap.from('.hero-description', {
 				duration: 1,
 				y: 30,
 				opacity: 0,

@@ -318,6 +318,18 @@ body {
 	max-width: 600px;
 }
 
+.hero-description {
+	font-size: 1.25rem;
+	color: var(--color-gray);
+	max-width: 600px;
+	word-spacing: 0.05em;
+	letter-spacing: 0.01em;
+	line-height: 1.6;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	white-space: normal;
+}
+
 .scroll-indicator {
 	display: flex;
 	flex-direction: column;
@@ -469,13 +481,15 @@ h2 {
 .stats-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	gap: 2rem;
+	gap: 1rem;
+	/* Reduced gap to allow for wider cards */
 	margin: 3rem 0;
 }
 
 .stat-item {
 	background: rgba(0, 0, 0, 0.3);
-	padding: 2rem;
+	padding: 2.5rem 1.5rem;
+	/* Increased vertical padding, slightly reduced horizontal */
 	border-radius: 15px;
 	text-align: center;
 	backdrop-filter: blur(10px);
@@ -484,6 +498,8 @@ h2 {
 	position: relative;
 	overflow: hidden;
 	cursor: pointer;
+	min-width: 110px;
+	/* Ensure a minimum width */
 }
 
 .stat-item:hover {
@@ -513,12 +529,15 @@ h2 {
 
 .stat-number {
 	display: block;
-	font-size: 3rem;
+	font-size: 3.5rem;
+	/* Increased from 3rem to 3.5rem */
 	font-weight: 700;
 	color: var(--color-accent);
 	margin-bottom: 0.5rem;
 	text-shadow: 0 0 10px var(--color-accent);
 	transition: all 0.3s ease;
+	letter-spacing: 1px;
+	/* Added for better readability */
 }
 
 .stat-item:hover .stat-number {
@@ -1667,17 +1686,26 @@ button,
 	overflow: hidden;
 	border-right: .15em solid var(--color-accent);
 	white-space: nowrap;
-	letter-spacing: .15em;
-	animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+	letter-spacing: .05em;
+	display: inline-block;
+	position: relative;
+	color: var(--color-primary);
+	font-weight: 600;
 }
 
-@keyframes typing {
-	from {
-		width: 0
+.typewriter-cursor {
+	animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+	from,
+	to {
+		border-color: transparent
 	}
 
-	to {
-		width: 100%
+	50% {
+		border-color: var(--color-accent)
 	}
 }
 
@@ -2397,6 +2425,9 @@ p {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	white-space: normal;
+	word-spacing: 0.05em;
+	letter-spacing: 0.01em;
+	line-height: 1.6;
 }
 
 /* Ensure proper text flow */
@@ -2405,11 +2436,17 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p,
+span,
+a,
+div {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	hyphens: auto;
 	max-width: 100%;
+	word-spacing: normal;
+	white-space: normal;
 }
 
 p {
