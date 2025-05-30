@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rafi BR | Fullstack Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/animations.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
@@ -31,6 +32,11 @@
                 <a href="#work" class="nav-link">Work</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
+            <button class="menu-btn" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -40,10 +46,14 @@
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Fullstack & <span class="highlight">Multiplatform</span> Developer</h1>
-                <p class="subtitle">Building innovative solutions across platforms</p>
+                <h1 class="fade-in-delay-1">Fullstack & <span class="highlight typewriter">Multiplatform</span> Developer</h1>
+                <p class="subtitle fade-in-delay-2">Building innovative solutions across platforms with cutting-edge technology</p>
+                <div class="hero-buttons fade-in-delay-3">
+                    <a href="#work" class="btn btn-primary pulse">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary floating">Get In Touch</a>
+                </div>
             </div>
-            <div class="scroll-indicator">
+            <div class="scroll-indicator bounce-in">
                 <span>Scroll Down</span>
                 <div class="scroll-line"></div>
             </div>
@@ -54,33 +64,33 @@
     <section id="about" class="about">
         <div class="parallax-bg about-bg"></div>
         <div class="container">
-            <div class="section-header">
+            <div class="section-header slide-in-up">
                 <span class="section-tag">About Me</span>
                 <h2>Who Am I?</h2>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text slide-in-left">
                     <p class="lead">I'm a fullstack developer specializing in web and mobile development, with a passion for creating scalable and efficient solutions.</p>
                     <p>With 4+ years of development experience, I combine technical expertise with problem-solving skills to build innovative applications across multiple platforms.</p>
                     <div class="stats-grid">
-                        <div class="stat-item">
+                        <div class="stat-item card-hover fade-in-delay-1">
                             <span class="stat-number">4+</span>
                             <span class="stat-label">Years Experience</span>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item card-hover fade-in-delay-2">
                             <span class="stat-number">50+</span>
                             <span class="stat-label">Projects Completed</span>
                         </div>
-                        <div class="stat-item">
+                        <div class="stat-item card-hover fade-in-delay-3">
                             <span class="stat-number">30+</span>
                             <span class="stat-label">Happy Clients</span>
                         </div>
                     </div>
                 </div>
-                <div class="skills-container">
+                <div class="skills-container slide-in-right">
                     <h3>Technical Skills</h3>
                     <div class="skills-grid">
-                        <div class="skill-category">
+                        <div class="skill-category bounce-in">
                             <h4>Frontend & Mobile</h4>
                             <div class="skill-tags">
                                 <span>React</span>
@@ -90,7 +100,7 @@
                                 <span>HTML5/CSS3</span>
                             </div>
                         </div>
-                        <div class="skill-category">
+                        <div class="skill-category scale-in">
                             <h4>Backend</h4>
                             <div class="skill-tags">
                                 <span>Node.js</span>
@@ -101,7 +111,7 @@
                                 <span>PostgreSQL</span>
                             </div>
                         </div>
-                        <div class="skill-category">
+                        <div class="skill-category rotate-in">
                             <h4>DevOps & Tools</h4>
                             <div class="skill-tags">
                                 <span>Docker</span>
@@ -121,13 +131,13 @@
     <section id="work" class="work">
         <div class="parallax-bg work-bg"></div>
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <span class="section-tag">Portfolio</span>
-                <h2>Recent Projects</h2>
+                <h2 class="text-reveal">Recent Projects</h2>
             </div>
             
             <!-- Project Filters -->
-            <div class="project-filters">
+            <div class="project-filters slide-in-up">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="web">Web</button>
                 <button class="filter-btn" data-filter="mobile">Mobile</button>
@@ -137,19 +147,19 @@
             <!-- Project Grid -->
             <div class="project-grid">
                 <!-- Project Card -->
-                <article class="project-card" data-category="web">
+                <article class="project-card card-hover" data-category="web">
                     <div class="project-image skeleton-loading">
-                        <img src="path/to/project1.jpg" alt="Project 1" loading="lazy">
+                        <img src="images/work/FKUI.png" alt="FKUI Project" loading="lazy">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="#" class="btn-demo" aria-label="View Demo">Live Demo</a>
-                                <a href="#" class="btn-source" aria-label="View Source">Source Code</a>
+                                <a href="#" class="btn-demo pulse" aria-label="View Demo">Live Demo</a>
+                                <a href="#" class="btn-source floating" aria-label="View Source">Source Code</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3>Project Name</h3>
-                        <p>Short project description goes here.</p>
+                        <h3>FKUI System</h3>
+                        <p>Faculty management system with real-time data processing.</p>
                         <div class="project-tech">
                             <span>React</span>
                             <span>Node.js</span>
@@ -158,7 +168,47 @@
                     </div>
                 </article>
 
-                <!-- Add more project cards with different categories -->
+                <article class="project-card card-hover" data-category="mobile">
+                    <div class="project-image skeleton-loading">
+                        <img src="images/work/Booking bengkel.png" alt="Booking Bengkel App" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="btn-demo pulse" aria-label="View Demo">Live Demo</a>
+                                <a href="#" class="btn-source floating" aria-label="View Source">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Booking Bengkel</h3>
+                        <p>Mobile app for workshop booking and management.</p>
+                        <div class="project-tech">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card card-hover" data-category="web">
+                    <div class="project-image skeleton-loading">
+                        <img src="images/work/Pelatihan.png" alt="Training Platform" loading="lazy">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="btn-demo pulse" aria-label="View Demo">Live Demo</a>
+                                <a href="#" class="btn-source floating" aria-label="View Source">Source Code</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Training Platform</h3>
+                        <p>Online learning platform with interactive features.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Laravel</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -166,44 +216,44 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title slide-in-up">Get In Touch</h2>
             <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                <div class="contact-info slide-in-left">
+                    <div class="contact-item bounce-in">
+                        <i class="fas fa-envelope floating"></i>
                         <h3>Email</h3>
                         <a href="mailto:rafi.brilliansyah@gmail.com">rafi.brilliansyah@gmail.com</a>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
+                    <div class="contact-item scale-in">
+                        <i class="fab fa-linkedin pulse"></i>
                         <h3>LinkedIn</h3>
                         <a href="https://www.linkedin.com/in/rafi-brilliansyah/" target="_blank">Connect on LinkedIn</a>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
+                    <div class="contact-item rotate-in">
+                        <i class="fab fa-github floating"></i>
                         <h3>GitHub</h3>
                         <a href="https://github.com/rafibr" target="_blank">View My Projects</a>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
+                <div class="contact-form-wrapper slide-in-right">
                     <form id="contact-form" class="contact-form">
-                        <div class="form-group">
+                        <div class="form-group fade-in-delay-1">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group fade-in-delay-2">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group fade-in-delay-3">
                             <label for="subject">Subject</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group fade-in-delay-4">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary pulse">
                             <span class="btn-text">Send Message</span>
                             <div class="btn-loading">
                                 <span class="spinner"></span>
@@ -237,6 +287,9 @@
     </script>
 
     <!-- Custom Scripts -->
+    <script src="js/loading.js"></script>
+    <script src="js/enhanced-animations.js"></script>
+    <script src="js/visual-effects.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/micro-animations.js"></script>
     <script src="js/contact.js"></script>
@@ -255,7 +308,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Rafi BR</p>
+                <p>&copy; <span id="current-year"></span> Rafi BR</p>
             </div>
         </div>
     </footer>
@@ -264,5 +317,6 @@
     <script src="js/main.js"></script>
     <script src="js/cursor.js"></script>
     <script src="js/work-gallery.js"></script>
+    <script src="js/footer-year.js"></script>
 </body>
 </html>
