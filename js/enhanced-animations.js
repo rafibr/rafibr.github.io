@@ -272,5 +272,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	} else {
 		initEnhancedAnimations();
 	}
-	new EnhancedAnimations();
 });

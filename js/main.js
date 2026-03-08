@@ -88,7 +88,9 @@ class PortfolioController {
 
 	setupFormValidation() {
 		const form = document.getElementById('contact-form');
-		if (form) {
+		const hasEmailJs = typeof window.emailjs !== 'undefined';
+
+		if (form && !hasEmailJs) {
 			form.addEventListener('submit', this.handleFormSubmit.bind(this));
 		}
 

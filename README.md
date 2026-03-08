@@ -1,122 +1,75 @@
 # Rafi BR Portfolio Website
 
-A modern, animated portfolio website showcasing skills, projects, and contact information with advanced visual effects and animations.
+Personal portfolio website for Muhammad Rafi Brilliansyah Ramadhan, updated with current profile content, selected public work, internal systems, and direct contact channels.
 
-## 📋 Features
+## Features
 
-- **Responsive Design** - Fully responsive layout that works on all devices (400px - 1400px+)
-- **Advanced Animations** - Multiple animation types including typewriter, floating, pulse, glitch effects
-- **Particle System** - Interactive background particles with Three.js
-- **Loading Screen** - Custom loading screen with progress bar
-- **Parallax Effects** - Subtle parallax scrolling backgrounds
-- **Project Filtering** - Filter projects by category
-- **Contact Form** - Functional contact form using EmailJS
-- **Mouse Trail Effects** - Interactive cursor effects
-- **Mobile-Optimized** - Enhanced mobile navigation and touch interactions
-- **Scroll Animations** - Elements animate as they enter the viewport
+- Responsive single-page portfolio layout
+- Updated hero, about, and contact sections based on the latest profile deck
+- Selected work section covering public and internal projects
+- Animated loading screen, micro-interactions, and section reveals
+- Three.js hero background loaded through an ES module
+- EmailJS contact form integration
+- Mobile-friendly navigation and layout behavior
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- HTML5 / CSS3
-- JavaScript (ES6+)
-- GSAP (Animation)
-- Three.js (3D/WebGL)
-- Anime.js (Animation)
-- EmailJS (Contact Form)
-- Intersection Observer API
-- CSS Grid/Flexbox
+- HTML5
+- CSS3
+- JavaScript (ES modules + browser scripts)
+- GSAP
+- Anime.js
+- Three.js
+- EmailJS
 
-## 🚀 Performance Optimizations
+## Project Structure
 
-- Lazy loading images
-- Asset preloading system
-- Optimized animations with requestAnimationFrame
-- Debounced scroll events
-- Progressive asset loading
-
-## 📁 Project Structure
-
-```
-├── index.html              # Main HTML file
-├── styles.css              # Core styles
+```text
+├── index.html
+├── styles.css
 ├── css/
-│   └── animations.css      # Animation keyframes and utility classes
+│   └── animations.css
 ├── js/
-│   ├── animations.js       # Primary animation controllers
-│   ├── contact.js          # Contact form functionality
-│   ├── cursor.js           # Custom cursor effects
-│   ├── enhanced-animations.js # Advanced animation effects
-│   ├── footer-year.js      # Dynamic year in footer
-│   ├── loading.js          # Loading screen functionality
-│   ├── main.js             # Core functionality
-│   ├── micro-animations.js # Small UI animations
-│   ├── parallax.js         # Parallax scrolling effects
-│   ├── three-scene.js      # Three.js background effects
-│   ├── visual-effects.js   # Visual effects and particles
-│   └── work-gallery.js     # Project filtering and showcase
-└── images/                 # Website images and assets
-    ├── backgrounds/        # Section background images
-    └── work/               # Project screenshots
+│   ├── contact.js
+│   ├── enhanced-animations.js
+│   ├── footer-year.js
+│   ├── loading.js
+│   ├── main.js
+│   ├── micro-animations.js
+│   ├── three-scene.js
+│   └── visual-effects.js
+└── images/
+    ├── backgrounds/
+    └── work/
 ```
 
-## 🎨 Animation Classes
+## Local Preview
 
-The website includes many animation utility classes you can use:
+Run a simple local server from the repository root:
 
-- `fade-in` - Simple fade in animation
-- `fade-in-delay-1` through `fade-in-delay-5` - Fade in with increasing delays
-- `slide-in-up`, `slide-in-left`, `slide-in-right` - Slide in animations
-- `bounce-in` - Bouncing entrance effect
-- `scale-in` - Scale from small to normal size
-- `rotate-in` - Rotation animation
-- `floating` - Gentle floating motion
-- `pulse` - Pulsing effect for buttons
-- `typewriter` - Text typing effect
-- `glitch` - Digital glitch effect
+```bash
+python -m http.server 4173 --bind 127.0.0.1
+```
 
-## 📱 Responsive Breakpoints
+Then open:
 
-- 1400px+ - Large desktops
-- 1200px - Standard desktops
-- 992px - Small desktops and large tablets
-- 768px - Tablets
-- 576px - Large phones
-- 400px - Small phones
+```text
+http://127.0.0.1:4173/
+```
 
-## 🧩 Components
+## Content Update Notes
 
-- **Loading Screen** - Preloads assets with progress indicator
-- **Animated Navigation** - Smooth scrolling with active state tracking
-- **Hero Section** - Animated introduction with particle background
-- **About Section** - Skills and statistics with animation sequences
-- **Work Section** - Filterable project gallery with hover effects
-- **Contact Section** - Interactive contact form with validation
+- Main content lives in `index.html`
+- Core styling lives in `styles.css`
+- Project screenshots are stored in `images/work/`
+- EmailJS public key is initialized in `index.html`
+- EmailJS service and template IDs are configured in `js/contact.js`
 
-## 🔧 Setup and Customization
+## Author
 
-1. Clone the repository
-2. Modify `index.html` to update content
-3. Add your own projects to the work section
-4. Update EmailJS settings in `contact.js` with your service keys
-5. Customize colors and themes in `styles.css`
+Muhammad Rafi Brilliansyah Ramadhan
 
-## ⚙️ Configuration
-
-- Background effects can be adjusted in `visual-effects.js`
-- Animation timing can be modified in `animations.css`
-- Loading screen behavior can be configured in `loading.js`
-
-## 📝 License
-
-This project is released under the MIT License
-
-## 👤 Author
-
-**Rafi Brilliansyah**
 - GitHub: [rafibr](https://github.com/rafibr)
-- LinkedIn: [rafi-brilliansyah](https://linkedin.com/in/rafi-brilliansyah)
-- Email: rafi.brilliansyah@gmail.com
-
----
-
-© <span id="readme-year">2024</span> Rafi BR. All rights reserved.
+- LinkedIn: [rafi-brilliansyah](https://www.linkedin.com/in/rafi-brilliansyah/)
+- Email: [rafi.brilliansyah@gmail.com](mailto:rafi.brilliansyah@gmail.com)
+- Website: [rafibr.github.io](https://rafibr.github.io)

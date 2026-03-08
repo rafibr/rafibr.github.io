@@ -16,35 +16,17 @@ class LoadingScreen {
 	}
 
 	simulateLoading() {
-		const loadingSteps = [
-			{ progress: 20, text: 'Loading assets...' },
-			{ progress: 80, text: 'Preparing interface...' },
-			{ progress: 100, text: 'Complete!' }
-		];
-
-		let stepIndex = 0;
-
-		const updateProgress = () => {
-			if (stepIndex < loadingSteps.length) {
-				this.targetProgress = loadingSteps[stepIndex].progress;
-				stepIndex++; this.animateProgress(() => {
-					if (stepIndex < loadingSteps.length) {
-						setTimeout(updateProgress, 150); // Reduced from 300ms to 150ms
-					} else {
-						setTimeout(() => {
-							this.hideLoadingScreen();
-						}, 200); // Reduced from 500ms to 200ms
-					}
-				});
-			}
-		};
-
-		// Start loading after a short delay
-		setTimeout(updateProgress, 500);
+		setTimeout(() => {
+			this.targetProgress = 100;
+			this.animateProgress(() => {
+				setTimeout(() => {
+					this.hideLoadingScreen();
+				}, 120);
+			}, 1100);
+		}, 120);
 	}
 
-	animateProgress(callback) {
-		const duration = 800;
+	animateProgress(callback, duration = 800) {
 		const startTime = performance.now();
 		const startProgress = this.currentProgress;
 		const progressDiff = this.targetProgress - startProgress;
@@ -53,9 +35,10 @@ class LoadingScreen {
 			const elapsed = currentTime - startTime;
 			const progress = Math.min(elapsed / duration, 1);
 
-			// Easing function
-			const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-			this.currentProgress = startProgress + (progressDiff * easeOutCubic);
+			const easeInOutCubic = progress < 0.5
+				? 4 * Math.pow(progress, 3)
+				: 1 - Math.pow(-2 * progress + 2, 3) / 2;
+			this.currentProgress = startProgress + (progressDiff * easeInOutCubic);
 
 			// Update UI
 			this.progress.style.width = `${this.currentProgress}%`;
@@ -76,8 +59,14 @@ class LoadingScreen {
 
 	preloadAssets() {
 		const images = [
+			'images/work/wbs-banjarbaru.png',
+			'images/work/intan-banjar-mobile.png',
+			'images/work/tagid-ai.png',
+			'images/work/youthcamp.png',
+			'images/work/bank-akasia-kredit.png',
+			'images/work/luminatesting.png',
+			'images/work/meditap-logo.png',
 			'images/work/FKUI.png',
-			'images/work/Booking bengkel.png',
 			'images/work/Pelatihan.png',
 			'images/backgrounds/hero.jpg',
 			'images/backgrounds/about.jpg',
